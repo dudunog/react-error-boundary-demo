@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useErrorHandler } from 'react-error-boundary'
+import Bugsnag from '@bugsnag/js'
 
 import '../../styles/styles.css'
 import './styles.css'
@@ -22,6 +23,7 @@ export const Greeting = () => {
         error => {
           // O ErrorBoundary mais próximo vai capturá-lo
           handleError(error)
+          Bugsnag.notify(error)
           setIsLoading(false)
         },
     )
